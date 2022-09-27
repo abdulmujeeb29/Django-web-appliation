@@ -7,5 +7,6 @@ urlpatterns =[
     path('register',views.register,name='register'),
     path('logout',views.logout,name='logout'),
     path('post/<str:pk>',views.post,name='post'),
-    path('blog',views.blog,name='blog')
+    path('blog',views.blog,name='blog'),
+    path("test",views.test,name='test')
 ]

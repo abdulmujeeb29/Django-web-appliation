@@ -7,7 +7,6 @@ from django.contrib.auth.models import User, auth
 from django.contrib import messages
 from.models import Goods, Post
 
-
 # Create your views here.
 def index(request):
     Goodss= Goods.objects.all()
@@ -69,12 +68,13 @@ def login(request):
 def logout(request):
     auth.logout(request)
     return redirect ('')
-
+ 
+def blog(request):
+    posts=Post.objects.all()
+    return render (request,'blog.html',{'posts' :posts})       
 
 def post(request, pk):
     posts=Post.objects.get(id=pk)
     return render(request,'post.html',{'posts':posts})
- 
-def blog(request):
-    posts=Post.objects.all()
-    return render (request,'blog.html',{'posts' :posts})                                                                                                                                                                                      
+
+                                                                                                                                                                           

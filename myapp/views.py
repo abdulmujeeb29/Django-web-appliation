@@ -105,11 +105,12 @@ def post(request, pk):                       #individual blog posts
     
     return render(request,'post.html',{'posts':posts , 'comments' : comments})
 
-def delete_post(request, pk):
-    post = Post.get_object_or_404(Post, pk=pk)
 
-    if request.method == 'POST':
-        post.delete()
-        return redirect ('/blog')
+# def delete_post(request, pk):
+#     post = get_object_or_404(Post, pk=pk)
 
-    return render (request,'delete_post.html' ,{'post' : post })
+#     if request.method == 'POST':
+#         post.delete()
+#         return redirect('/blog')
+
+#     return render(request, 'delete_post.html', {'post': post})

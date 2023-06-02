@@ -8,6 +8,6 @@ urlpatterns =[
     path('logout',views.logout,name='logout'),
     path('post/<uuid:pk>',views.post,name='post'),
     path('blog',views.blog,name='blog'),
-    path('delete_post/<uuid:pk>', views.delete_post, name='delete_post'),
+    # path('delete_post/<uuid:pk>/delete',views.delete_post, name='delete_post'),
 
 ]

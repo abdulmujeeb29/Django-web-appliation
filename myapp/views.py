@@ -1,11 +1,12 @@
 import email
 from poplib import POP3_SSL_PORT
 from pyexpat import features
-from django.shortcuts import render,redirect 
+import uuid
+from django.shortcuts import get_object_or_404, render,redirect 
 from django.http import HttpResponse
 from django.contrib.auth.models import User, auth
 from django.contrib import messages
-from.models import Goods, Post
+from.models import *
 
 # Create your views here.
 def index(request):
@@ -33,7 +34,13 @@ def register(request) :
             else :
                 user=User.objects.create_user(username=username,email=email,password=password)
                 user.save();
-                return redirect('login')
+                #return redirect('login')
+                
+                user =auth.authenticate(username=username,password=password)
+
+                if user is not None:
+                    auth.login(request,user)
+                    return redirect('/')
 
         else:
             messages.info(request,'password not the same')
@@ -71,10 +78,38 @@ def logout(request):
  
 def blog(request):
     posts=Post.objects.all()
+
+    if request.method == 'POST':
+        title =request.POST['title']
+        details = request.POST['details']
+
+        post_id = uuid.uuid4()
+
+        post= Post.objects.create(id= post_id,title=title, details=details) 
+        post.save();
+
+
     return render (request,'blog.html',{'posts' :posts})       
 
-def post(request, pk):
+def post(request, pk):                       #individual blog posts 
     posts=Post.objects.get(id=pk)
-    return render(request,'post.html',{'posts':posts})
+    comments = Comment.objects.filter(post=posts).order_by('created')
 
-                                                                                                                                                                           
+    
+    if request.method == 'POST':            #comment on a blog post 
+        content = request.POST['content']
+        author = request.user            #get the currently logged i user 
+
+        comment = Comment.objects.create(content = content, author =author , post=posts )
+        comment.save();
+    
+    return render(request,'post.html',{'posts':posts , 'comments' : comments})
+
+def delete_post(request, pk):
+    post = Post.get_object_or_404(Post, pk=pk)
+
+    if request.method == 'POST':
+        post.delete()
+        return redirect ('/blog')
+
+    return render (request,'delete_post.html' ,{'post' : post })

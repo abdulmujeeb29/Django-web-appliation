@@ -1,50 +1,55 @@
 {% load static %}
 <!DOCTYPE html>
 <html>
-   <head>
+<head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Thales Blog</title>
+  <link href="{% static 'assets/img/favicon.png' %}" rel="icon">
+  <link href="{% static 'assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/aos/aos.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/remixicon/remixicon.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
 
+  <style>
+    .comment-list {
+    margin-bottom: 20px;
+  }
 
-    <title>Thales Blog</title>
+  .comment {
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+  }
 
+  .comment p {
+    margin: 0;
+  }
 
-    <link href=" {% static 'assets/img/favicon.png'%}" rel="icon">
-    <link href=" {% static 'assets/img/apple-touch-icon.png'%}" rel="apple-touch-icon">
+  .comment-meta {
+    font-size: 12px;
+    color: #888;
+  }
+  </style>
+</head>
 
-
-    <link href=" {% static 'https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-
-
-  <link href=" {% static 'assets/vendor/aos/aos.css' %}" rel="stylesheet">
-  <link href=" {% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
-  <link href=" {% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
-  <link href=" {% static 'assets/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
-  <link href=" {% static 'assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
-  <link href=" {% static 'assets/vendor/remixicon/remixicon.css' %}" rel="stylesheet">
-  <link href=" {% static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
-
-  <link href=" {% static 'assets/css/style.css' %}" rel="stylesheet">
-
-
-   </head>
 <body>
-
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center justify-content-between">
-
-      <h1 class="logo"><a href="index.html">Ika Blog</a></h1> 
-
+      <h1 class="logo"><a href="index.html">Ika Blog</a></h1>
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto active" href="">Home</a></li>
+          <li><a class="nav-link scrollto active" href="/blog">Home</a></li>
           <li><a class="nav-link scrollto" href="#about">About</a></li>
-          
-
-
         </ul>
       </nav>
-
+      <i class="bi bi-list mobile-nav-toggle"></i>
     </div>
   </header>
 
@@ -52,46 +57,72 @@
     <div class="container position-relative" data-aos="fade-up" data-aos-delay="100">
       <div class="row justify-content-center">
         <div class="col-xl-7 col-lg-9 text-center">
-        
-          <h1> WELCOME to Thales Educational Blog page </h1>
-          <h2>No be everything be money, you sef try sabi book  </h2>
-          
-          
-            
-          </div>
-          
+          <h1>WELCOME to Thales Educational Blog page</h1>
+          <h2>No be everything be money, you sef try sabi book</h2>
+          <!-- <p>Are you ready to dive into the fascinating world of education? Our educational blog is here to inspire and empower you on your learning journey. From informative articles to thought-provoking discussions, we cover a wide range of educational topics to enhance your knowledge and spark your curiosity.</p> -->
+          <!-- <p>Join our vibrant community of learners and educators as we explore the latest trends in education, share valuable insights, and provide practical tips for academic success. Whether you're a student, teacher, or lifelong learner, you'll find something valuable on our blog.</p> -->
+          <p>Stay updated with the latest posts, engage in meaningful discussions, and leave your comments to share your thoughts and experiences. Remember, learning is a continuous process, and together, we can unlock the power of knowledge.</p>
         </div>
       </div>
-
     </div>
-
   </section>
 
-  <div>
+  <div class="container">
     <div class="row">
-      <div class="leftcolum">
-        
-        
-        <div class="card ">
-            <h2>{{posts.title}}</h2>
-            <h5>{{posts.created}}</h5>
-            <p>{{posts.details}}</p>
+      <div class="col-md-8 offset-md-2">
+        <div class="card mb-4">
+          <div class="card-body">
+            <h2>{{ posts.title }}</h2>
+            <h5>{{ posts.created }}</h5>
+            <p>{{ posts.details }}</p>
+
+      
+          </div>
         </div>
-       
-        
       </div>
     </div>
+  </div>
+  <div class="card">
+    <div class="card-body">
+      <h4>Comments</h4>
+      <!-- Display existing comments here -->
+      {% for comment in comments %}
+      <div class="comment">
+        <p>{{ comment.content }}</p>
+        <span>By {{ comment.author }} on {{ comment.created }}</span>
+      </div>
+      {% endfor %}
 
-<!-- Vendor JS Files -->
-<script src="{% static 'assets/vendor/purecounter/purecounter_vanilla.js' %}"></script>
-<script src="{% static 'assets/vendor/aos/aos.js' %}"></script>
-<script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js'%}"></script>
-<script src="{% static 'assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
-<script src=" {% static 'assets/vendor/isotope-layout/isotope.pkgd.min.js'%}"></script>
-<script src=" {% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
-<script src=" {% static 'assets/vendor/php-email-form/validate.js' %}"></script>
+      <!-- Add new comment form -->
+      <h4>Add a Comment</h4>
+      <form action="/post/{{ posts.id }}" method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+          
+        <input type="hidden" name="author" id="author" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="content">Comment</label>
+          <textarea name="content" id="content" class="form-control"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>
 
-<!-- Template Main JS File -->
-<script src=" {% static 'assets/js/main.js' %}"></script>
+
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'assets/vendor/purecounter/purecounter_vanilla.js' %}"></script>
+  <script src="{% static 'assets/vendor/aos/aos.js' %}"></script>
+  <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{% static 'assets/js/main.js' %}"></script>
 </body>
 </html>

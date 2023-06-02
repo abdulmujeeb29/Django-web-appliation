@@ -2,103 +2,94 @@
 <!DOCTYPE html>
 <html>
    <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+      <meta charset="utf-8">
+      <meta content="width=device-width, initial-scale=1.0" name="viewport">
+      <title>ThalesMedia Inc</title>
+      <link href="{% static 'assets/img/favicon.png' %}" rel="icon">
+      <link href="{% static 'assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+      <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i' %}" rel="stylesheet">
+      <link href="{% static 'assets/vendor/aos/aos.css' %}" rel="stylesheet">
+      <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+      <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+      <link href="{% static 'assets/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+      <link href="{% static 'assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+      <link href="{% static 'assets/vendor/remixicon/remixicon.css' %}" rel="stylesheet">
+      <link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+      <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
+      <style>
+         a {
+            text-decoration: none;
+            color: black;
+         }
+         .login-link {
+  margin-top: 30px;
+  font-size: 14px;
+}
 
+.login-link a {
+  color: #000;
+  text-decoration: none;
+}
 
-    <title>ThalesMedia Inc</title>
+.login-link a:hover {
+  text-decoration: underline;
+}
 
-
-    <link href=" {% static 'assets/img/favicon.png'%}" rel="icon">
-    <link href=" {% static 'assets/img/apple-touch-icon.png'%}" rel="apple-touch-icon">
-
-
-    <link href=" {% static 'https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-
-
-  <link href=" {% static 'assets/vendor/aos/aos.css' %}" rel="stylesheet">
-  <link href=" {% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
-  <link href=" {% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
-  <link href=" {% static 'assets/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
-  <link href=" {% static 'assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
-  <link href=" {% static 'assets/vendor/remixicon/remixicon.css' %}" rel="stylesheet">
-  <link href=" {% static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
-
-  <link href=" {% static 'assets/css/style.css' %}" rel="stylesheet">
-
-
+      </style>
    </head>
-<body>
-
-  <header id="header" class="fixed-top">
-    <div class="container d-flex align-items-center justify-content-between">
-
-      <h1 class="logo"><a href="index.html">ThalesMedia</a></h1> 
-
-      <nav id="navbar" class="navbar">
-        <ul>
-          <li><a class="nav-link scrollto active" href="/">Home</a></li>
-          <li><a class="nav-link scrollto" href=""></a></li>
-          
-
-
-        </ul>
-      </nav>
-
-    </div>
-  </header>
-
-  <section id="hero" class="d-flex align-items-center">
-    <div class="container position-relative" data-aos="fade-up" data-aos-delay="100">
-      <div class="row justify-content-center">
-        <div class="col-xl-7 col-lg-9 text-center">
-        
-          <h1> WELCOME to ThalesMedia Inc</h1>
-          
-          
-          
-            
-          </div>
-          
-        </div>
+   <body>
+      <header id="header" class="fixed-top">
+         <div class="container d-flex align-items-center justify-content-between">
+            <h1 class="logo"><a href="index.html">ThalesMedia</a></h1>
+            <nav id="navbar" class="navbar">
+               <ul>
+                  <li><a class="nav-link scrollto active" href="/">Home</a></li>
+                  <li><a class="nav-link scrollto" href=""></a></li>
+               </ul>
+               <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav>
+         </div>
+      </header>
+      <section id="hero" class="d-flex align-items-center">
+         <div class="container position-relative" data-aos="fade-up" data-aos-delay="100">
+            <div class="row justify-content-center">
+               <div class="col-xl-7 col-lg-9 text-center">
+                  <h1>WELCOME to ThalesMedia Inc</h1>
+               </div>
+            </div>
+         </div>
+      </section>
+      <div>
+         {% for message in messages %}
+         <h5>{{ message }}</h5>
+         {% endfor %}
       </div>
+      <div class="text-center">
+         <h1>SIGN UP PAGE</h1>
+         <form method="POST" action="register">
+            {% csrf_token %}
+            <h3>Username</h3>
+            <input type="text" name="username" placeholder="Name" />
+            <h3>Email</h3>
+            <input type="email" name="email" placeholder="Email address" />
+            <h3>Password</h3>
+            <input type="password" name="password" placeholder="password" />
+            <h3>Confirm password</h3>
+            <input type="password" name="password2" placeholder="password" /><br>
+            <input type="submit" />
+         </form>
+         <p class="login-link">Already registered? <a href="/login">Login here</a></p>
 
-    </div>
-
-  </section>
- <style>
-  a{text-decoration: none ;
-    color: black;
-    
-  }
- </style>
-  {% for message in messages %}
-  <h5>{{message}}</h5>
-  {% endfor %}
-  <h1>SIGN UP PAGE </h1>
-  <form method="POST" action="register">
-      {% csrf_token %}
-      <h3>Username</h3>
-      <input type="text"  name="username" placeholder="Name" />
-      <h3>Email</h3>
-      <input type="email"  name="email" placeholder="Email address" />
-      <h3>Password</h3>
-      <input type="password"  name="password" placeholder="password" />
-      <h3>Confirm password</h3>
-      <input type="password"  name="password2" placeholder="password" /><br>
-  
-      <input type="submit" />
-  </form>
-<!-- Vendor JS Files -->
-<script src="{% static 'assets/vendor/purecounter/purecounter_vanilla.js' %}"></script>
-<script src="{% static 'assets/vendor/aos/aos.js' %}"></script>
-<script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js'%}"></script>
-<script src="{% static 'assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
-<script src=" {% static 'assets/vendor/isotope-layout/isotope.pkgd.min.js'%}"></script>
-<script src=" {% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
-<script src=" {% static 'assets/vendor/php-email-form/validate.js' %}"></script>
-
-<!-- Template Main JS File -->
-<script src=" {% static 'assets/js/main.js' %}"></script>
-</body>
+      </div>
+      <!-- Vendor JS Files -->
+      <script src="{% static 'assets/vendor/purecounter/purecounter_vanilla.js' %}"></script>
+      <script src="{% static 'assets/vendor/aos/aos.js' %}"></script>
+      <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+      <script src="{% static 'assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
+      <script src="{% static 'assets/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+      <script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+      <script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
+      <!-- Template Main JS File -->
+      <script src="{% static 'assets/js/main.js' %}"></script>
+   </body>
 </html>

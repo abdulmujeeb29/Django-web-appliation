@@ -6,7 +6,8 @@ urlpatterns =[
     path('login',views.login,name='login'),
     path('register',views.register,name='register'),
     path('logout',views.logout,name='logout'),
-    path('post/<str:pk>',views.post,name='post'),
+    path('post/<uuid:pk>',views.post,name='post'),
     path('blog',views.blog,name='blog'),
-    path("test",views.test,name='test')
+    path('delete_post/<uuid:pk>', views.delete_post, name='delete_post'),
+
 ]

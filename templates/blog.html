@@ -2,101 +2,135 @@
 <!DOCTYPE html>
 <html>
    <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
-
-    <title>Thales Blog</title>
-
-
-    <link href=" {% static 'assets/img/favicon.png'%}" rel="icon">
-    <link href=" {% static 'assets/img/apple-touch-icon.png'%}" rel="apple-touch-icon">
-
-
-    <link href=" {% static 'https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-
-
-  <link href=" {% static 'assets/vendor/aos/aos.css' %}" rel="stylesheet">
-  <link href=" {% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
-  <link href=" {% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
-  <link href=" {% static 'assets/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
-  <link href=" {% static 'assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
-  <link href=" {% static 'assets/vendor/remixicon/remixicon.css' %}" rel="stylesheet">
-  <link href=" {% static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
-
-  <link href=" {% static 'assets/css/style.css' %}" rel="stylesheet">
-
-
+      <meta charset="utf-8">
+      <meta content="width=device-width, initial-scale=1.0" name="viewport">
+      <title>Thales Blog</title>
+      <link href="{% static 'assets/img/favicon.png' %}" rel="icon">
+      <link href="{% static 'assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+      <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i' %}" rel="stylesheet">
+      <link href="{% static 'assets/vendor/aos/aos.css' %}" rel="stylesheet">
+      <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+      <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+      <link href="{% static 'assets/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+      <link href="{% static 'assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+      <link href="{% static 'assets/vendor/remixicon/remixicon.css' %}" rel="stylesheet">
+      <link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+      <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
+      <style>
+         a {
+            text-decoration: none;
+            color: black;
+         }
+      </style>
    </head>
-<body>
+   <body>
+      <header id="header" class="fixed-top">
+         <div class="container d-flex align-items-center justify-content-between">
+            <h1 class="logo"><a href="index.html">Ika Blog</a></h1>
+            <nav id="navbar" class="navbar">
+               <ul>
+                  <li><a class="nav-link scrollto active" href="/">Home</a></li>
+                  <li><a class="nav-link scrollto" href="">About</a></li>
+                  <li><a class="nav-link scrollto" href="">Music</a></li>
+                  <li><a class="nav-link scrollto" href="">Movies</a></li>
+                  <li><a class="nav-link scrollto" href="">Logout</a></li>
+               </ul>
+               <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav>
+         </div>
+      </header>
 
-  <header id="header" class="fixed-top">
-    <div class="container d-flex align-items-center justify-content-between">
-
-      <h1 class="logo"><a href="index.html">Ika Blog</a></h1> 
-
-      <nav id="navbar" class="navbar">
-        <ul>
-          <li><a class="nav-link scrollto active" href="/">Home</a></li>
-          <li><a class="nav-link scrollto" href="">About</a></li>
-          
-
-
-        </ul>
-      </nav>
-
-    </div>
-  </header>
-
-  <section id="hero" class="d-flex align-items-center">
-    <div class="container position-relative" data-aos="fade-up" data-aos-delay="100">
-      <div class="row justify-content-center">
-        <div class="col-xl-7 col-lg-9 text-center">
-        
-          <h1> WELCOME to Thales Educational Blog page </h1>
-          <h2>Stay Informed </h2>
-          
-          
-            
-          </div>
-          
+      <section id="hero" class="d-flex align-items-center">
+        <div class="container position-relative" data-aos="fade-up" data-aos-delay="100">
+           <div class="row justify-content-center">
+              <div class="col-xl-7 col-lg-9 text-center">
+                 <h1>WELCOME to Thales Educational Blog page</h1>
+                 <h2>Stay Informed </h2>
+                 <p>Discover a world of knowledge and inspiration at Thales Educational Blog. Our mission is to provide valuable educational content that empowers learners of all ages. Whether you're a student, educator, or lifelong learner, our blog offers a wealth of resources, insightful articles, and practical tips to help you excel in your educational journey.</p>
+                 <p>Are you ready to unlock your potential? Join our community and stay informed with the latest trends, expert insights, and innovative ideas in education.</p>
+                 <a href="#blog-posts" class="btn btn-primary">Explore Articles</a>
+              </div>
+           </div>
         </div>
-      </div>
-
-    </div>
-
-  </section>
- <style>
-  a{text-decoration: none ;
-    color: black;
-    
-  }
- </style>
-  <div>
-    <div class="row">
-      <div class="leftcolum">
-        {% for post in posts reversed %}
-        <div class="card ">
-          <a href="/post/{{post.id}}">
-          <h1>{{post.title}}</h1>
-          <h5>{{post.created}}</h5>
-          <p>{{post.details|truncatewords:15}}</p>
-          </a>
+     </section>
+     
+      <div class="container" id="blog-posts">
+         <div class="row">
+            <div class="col-md-8 offset-md-2">
+               {% for post in posts reversed %}
+               <div class="card mb-4">
+                  <div class="card-body">
+                     <a href="/post/{{ post.id }}">
+                        <h1>{{ post.title }}</h1>
+                        <h5>{{ post.created }}</h5>
+                        <p>{{ post.details|truncatewords:15 }}</p>
+                        
+                     </a>
+                     <button class="btn btn-primary btn-sm mr-1"data-toggle="modal" data-target="#activateModal{{ student.id }}">Edit</button>
+                     <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal{{ post.id }}">Delete</button>
+                  </div>
+               </div>
+               {% endfor %}
+               
+		    <!-- Delete Modal -->
+          <div class="modal fade" id="deleteModal{{post.id }}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel{{post.id }}" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="deleteModalLabel{{post.id }}">Delete Student</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Are you sure you want to delete this Student?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <form method="POST" >
+                            {% csrf_token % }
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
-        {% endfor %}
+
+               {% if user.is_superuser %}
+
+               <!-- Add the form for creating a blog post here -->
+               <div class="card mb-4">
+                  <div class="card-body">
+                     <h2>Create a Blog Post</h2>
+                     <form action="/blog" method="POST">
+                        {% csrf_token %}
+                        <div class="form-group">
+                           <label for="title">Title</label>
+                           <input type="text" class="form-control" id="title" name="title" required>
+                        </div>
+                        <div class="form-group">
+                           <label for="details">Details</label>
+                           <textarea class="form-control" id="details" name="details" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Create Post</button>
+                     </form>
+                  </div>
+               </div>
+               {% else %}
+
+               {% endif %}
+            </div>
+         </div>
       </div>
-    </div>
-
-<!-- Vendor JS Files -->
-<script src="{% static 'assets/vendor/purecounter/purecounter_vanilla.js' %}"></script>
-<script src="{% static 'assets/vendor/aos/aos.js' %}"></script>
-<script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js'%}"></script>
-<script src="{% static 'assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
-<script src=" {% static 'assets/vendor/isotope-layout/isotope.pkgd.min.js'%}"></script>
-<script src=" {% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
-<script src=" {% static 'assets/vendor/php-email-form/validate.js' %}"></script>
-
-<!-- Template Main JS File -->
-<script src=" {% static 'assets/js/main.js' %}"></script>
-</body>
+      <!-- Vendor JS Files -->
+      <script src="{% static 'assets/vendor/purecounter/purecounter_vanilla.js' %}"></script>
+      <script src="{% static 'assets/vendor/aos/aos.js' %}"></script>
+      <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+      <script src="{% static 'assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
+      <script src="{% static 'assets/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+      <script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+      <script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
+      <!-- Template Main JS File -->
+      <script src="{% static 'assets/js/main.js' %}"></script>
+   </body>
 </html>

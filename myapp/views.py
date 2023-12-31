@@ -1,6 +1,5 @@
 import email
-from poplib import POP3_SSL_PORT
-from pyexpat import features
+
 import uuid
 from django.shortcuts import get_object_or_404, render,redirect 
 from django.http import HttpResponse
@@ -10,8 +9,8 @@ from.models import *
 
 # Create your views here.
 def index(request):
-    Goodss= Goods.objects.all()
-    return render(request,'index.html',{'Goodss': Goodss})
+    
+    return render(request,'index.html')
 
 def register(request) :
     if request.method == 'POST' :
@@ -77,22 +76,14 @@ def logout(request):
     return redirect ('')
  
 def blog(request):
-    posts=Post.objects.all()
-
-    if request.method == 'POST':
-        title =request.POST['title']
-        details = request.POST['details']
-
-        post_id = uuid.uuid4()
-
-        post= Post.objects.create(id= post_id,title=title, details=details) 
-        post.save();
+    blogposts= BlogPost.objects.all()
+    #  post_id = uuid.uuid4()
 
 
-    return render (request,'blog.html',{'posts' :posts})       
+    return render (request,'blog.html', {'blogposts' : blogposts})       
 
 def post(request, pk):                       #individual blog posts 
-    posts=Post.objects.get(id=pk)
+    posts=BlogPost.objects.get(id=pk)
     comments = Comment.objects.filter(post=posts).order_by('created')
 
     

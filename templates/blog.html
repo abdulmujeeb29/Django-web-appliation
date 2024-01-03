@@ -1,95 +1,103 @@
 {% extends "base.html" %}
 
 {% block title %}
-    My Blog - {{ block.super }}
+My Blog - {{ block.super }}
 {% endblock %}
- {% block head %}
- <style>
-/* Custom styles for the blog post */
-.card {
-    border: none; /* Remove border from the card */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
-    max-width: 450px; /* Set a maximum width for the card */
-    margin: 0 auto;
-    margin-bottom: 4px;
-     /* Center the card horizontally */
-}
+{% block head %}
+<style>
+   /* Custom styles for the blog post */
+   .card {
+      border: none;
+      /* Remove border from the card */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      /* Add a subtle shadow */
+      max-width: 450px;
+      /* Set a maximum width for the card */
+      margin: 0 auto;
+      margin-bottom: 4px;
+      /* Center the card horizontally */
+   }
 
-.blog-post-title {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 10px;
-}
+   .blog-post-title {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 10px;
+   }
 
-.blog-post-image img {
-    max-width: 100%;
-    height: 100%; /* Set the height to 100% of the container */
-    border-radius: 8px; /* Add a slight border-radius to the image */
-}
+   .blog-post-image img {
+      max-width: 100%;
+      height: 100%;
+      /* Set the height to 100% of the container */
+      border-radius: 8px;
+      /* Add a slight border-radius to the image */
+   }
 
-.blog-post-body {
-    line-height: 1.6;
-}
+   .blog-post-body {
+      line-height: 1.6;
+   }
 
-.blog-post-created {
-    font-size: 14px;
-    color: #888;
-}
-
- </style>
-
+   .blog-post-created {
+      font-size: 14px;
+      color: #888;
+   }
+</style>
+{% endblock %}
 {% block about %}
 
-<li><a class="nav-link scrollto" href="about">About</a></li>
-          
-          
+<li><a class="nav-link scrollto" href="/about">About</a></li>
 
 {% endblock %}
 
- {% endblock %}
+{% block contact %}
+
+{% endblock %}
+
+
 {% block content %}
 <section id="hero" class="d-flex align-items-center">
    <div class="container position-relative" data-aos="fade-up" data-aos-delay="100">
-       <div class="row justify-content-center">
-           <div class="col-md-10 col-lg-8 text-center">
-               <h1 class="h2">Welcome to Thales Blog</h1>
-               <p class="lead">
-                   Explore a world of knowledge, entertainment, and the latest trends at Thales Blog. We offer valuable educational content
-                   alongside entertaining articles and the latest information to keep you engaged and informed.
-               </p>
-               <p>
-                   Whether you're a student, educator, or someone seeking entertainment and gist, our blog has something for everyone. Join our
-                   community to stay updated with the latest trends, expert insights, and exciting content.
-               </p>
-               <a href="#blog-posts" class="btn btn-primary">Explore Articles</a>
-           </div>
-       </div>
+      <div class="row justify-content-center">
+         <div class="col-md-10 col-lg-8 text-center">
+            <h1 class="h2">Welcome to ThalesBlog</h1>
+            <p class="lead">
+               Explore a world of knowledge, entertainment, and the latest trends at Thales Blog. We offer valuable
+               educational content
+               alongside entertaining articles and the latest information to keep you engaged and informed.
+            </p>
+            <p>
+               Whether you're a student, educator, or someone seeking entertainment and gist, our blog has something for
+               everyone. Join our
+               community to stay updated with the latest trends, expert insights, and exciting content.
+            </p>
+            <a href="#blog-posts" class="btn btn-primary">Explore Articles</a>
+         </div>
+      </div>
    </div>
 </section>
 
 
 
-<div class="container" id="blog-posts" >
+<div class="container" id="blog-posts">
    <div class="row gx-4">
-       {% for blog_post in blogposts %}
-           <div class="col-md-6 mb-4">
-               <div class="card">
-                   <div class="card-body">
-                       <h1 class="blog-post-title display-4">{{ blog_post.title }}</h1>
-                       {% if blog_post.image %}
-                           <div class="blog-post-image">
-                               <img src="{{ blog_post.image.url }}" alt="Blog Image" class="img-fluid rounded">
-                           </div>
-                       {% endif %}
-                       <p class="blog-post-body lead">{{ blog_post.body|truncatewords:15 }}</p>
-                       <p class="text-muted blog-post-created">{{ blog_post.created }}</p>
-                       <div class="text-center">
-                           <a href="#" class="btn btn-primary">Read More</a>
-                       </div>
-                   </div>
+      {% for blog_post in blogposts %}
+      <div class="col-md-6 mb-4">
+         <div class="card">
+            <div class="card-body">
+               <h1 class="blog-post-title display-4">{{ blog_post.title }}</h1>
+               {% if blog_post.image %}
+               <div class="blog-post-image">
+                  <img src="{{ blog_post.image.url }}" alt="Blog Image" class="img-fluid rounded">
                </div>
-           </div>
-       {% endfor %}
+               {% endif %}
+               <p class="blog-post-body lead">{{ blog_post.body|truncatewords:15 }}</p>
+               <p class="text-muted blog-post-created">{{ blog_post.created }}</p>
+               <div class="text-center">
+                  <a href="post/{{blog_post.id}}" class="btn btn-primary">Read More</a>
+               </div>
+            </div>
+         </div>
+      </div>
+      {% endfor %}
    </div>
 </div>
 
@@ -97,34 +105,41 @@
 
 
 
-  
-  
-  
-   
 
-   <!-- "Create a Blog Post" Form -->
-   {% if user.is_superuser %}
-       <div class="row">
-           <div class="col-md-8 offset-md-2">
-               <div class="card">
-                   <div class="card-body">
-                       <h2>Create a Blog Post</h2>
-                       <form action="/blog" method="POST">
-                           {% csrf_token %}
-                           <div class="form-group">
-                               <label for="title">Title</label>
-                               <input type="text" class="form-control" id="title" name="title" required>
-                           </div>
-                           <div class="form-group">
-                               <label for="details">Details</label>
-                               <textarea class="form-control" id="details" name="details" rows="5" required></textarea>
-                           </div>
-                           <button type="submit" class="btn btn-primary">Create Post</button>
-                       </form>
-                   </div>
+
+
+
+
+<!-- "Create a Blog Post" Form -->
+{% if user.is_superuser %}
+<div class="row">
+   <div class="col-sm-10 offset-sm-1">
+      <div class="card">
+         <div class="card-body">
+            <h2>Create a Blog Post</h2>
+            <form action="/blog" method="POST" enctype="multipart/form-data">
+               {% csrf_token %}
+               <div class="form-group">
+                  <label for="title">Title</label>
+                  <input type="text" class="form-control" id="title" name="title" required>
                </div>
-           </div>
-       </div>
-   {% endif %}
+               <div class="form-group">
+                  <label for="body">Body</label>
+                  <textarea class="form-control" id="body" name="body" rows="5" required></textarea>
+               </div>
+               <div class="form-group">
+                  <label for="image">Image</label>
+                  <input type="file" class="form-control-file" id="image" name="image">
+               </div>
+               <!-- Add a hidden input for the author -->
+               <input type="hidden" name="author" value="{{ user.username }}">
+               <button type="submit" class="btn btn-primary btn-block">Create Post</button>
+            </form>
+         </div>
+      </div>
+   </div>
+</div>
+
+{% endif %}
 </div>
 {% endblock %}

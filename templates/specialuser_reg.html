@@ -47,7 +47,7 @@
             <nav id="navbar" class="navbar">
                 <ul>
                     <li><a class="nav-link scrollto active" href="/">Home</a></li>
-                    <li><a class="nav-link scrollto" href=""></a></li>
+                    <li><a class="nav-link scrollto" href="/about">About</a></li>
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav>
@@ -66,7 +66,8 @@
                     </div>
                     <div class="text-center">
                         <h3>SIGN UP PAGE </h3>
-                        <form method="POST" action="register">
+                        <p>Are you an entertainer, technical writer, or content creator? ThalesMedia provides a platform for you to showcase and promote your work to a broad audience. Join us in creating a vibrant community where entertainment meets creativity.</p>
+                        <form method="POST" action="specialuser">
                             {% csrf_token %}
                             <h3>Username</h3>
                             <input type="text" name="username" placeholder="Name" />
@@ -76,6 +77,12 @@
                             <input type="password" name="password" placeholder="password" />
                             <h3>Confirm password</h3>
                             <input type="password" name="password2" placeholder="password" /><br>
+                            <h3>Specialization</h3>
+                            <select name="specialization">
+                                <option value="entertainer">Entertainer</option>
+                                <option value="technical_writer">Technical Writer</option>
+                                <option value="content_creator">Content Creator</option>
+                            </select><br>
                             <input type="submit" class="btn btn-primary" value="Register" />
                         </form>
                         <p class="login-link">Already registered? <a href="/login">Login here</a></p>

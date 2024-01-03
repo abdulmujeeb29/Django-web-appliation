@@ -34,3 +34,9 @@ class Comment(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class SpecialUser(models.Model):                                     #this  denotes technical writers or content users who also wanna publish their content 
+    is_active =models.BooleanField(default=False)
+    user = models.OneToOneField(User,on_delete=models.CASCADE)
+    specialization = models.CharField(max_length=50)

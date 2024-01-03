@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %} 
+About - {{block.super}}
+{% endblock %}
+
+{% block about %}
+
+<li><a class="nav-link scrollto active" href="/about">About</a></li>
+{% endblock %}
+
+{% block contact %}
+<li><a class="nav-link scrollto" href="/contact">Contact</a></li>
+{% endblock %}
+
+{% block content %}
+<section id="about" class="about mt-5">
+    <div class="container" data-aos="fade-up">
+        <div class="section-title">
+            <h2>About ThalesMedia</h2>
+            <h3>Welcome to ThalesMedia, your go-to platform for entertainment, education, and the latest trends!</h3>
+        </div>
+        <div class="row content">
+            <div class="col-lg-6">
+                <p>
+                    ThalesMedia is more than just a website; it's a diverse and dynamic space that caters to your entertainment needs. We bring you a blend of entertainment gists, insightful educational posts, and the hottest trending news.
+                </p>
+                <p>
+                    Whether you're a fan of celebrity updates, eager to explore educational content, or staying on top of the latest trends, ThalesMedia has something for everyone.
+                </p>
+            </div>
+            <div class="col-lg-6 pt-4 pt-lg-0">
+                <p>
+                    Are you an entertainer, technical writer, or content creator? ThalesMedia provides a platform for you to showcase and promote your work to a broad audience. Join us in creating a vibrant community where entertainment meets creativity.
+                </p>
+                <a href="/about" class="btn-learn-more">Learn More</a>
+            </div>
+        </div>
+    </div>
+</section><!-- End About Section -->
+{% endblock %}

@@ -1,10 +1,29 @@
 {% extends 'base.html' %}
 
+{% block home %}
+
+{% if user.specialuser %}             
+<a class="nav-link scrollto" href="/dashboard">Home</a></li>
+{% else %}
+            <!-- Normal User Link -->
+<li><a class="nav-link scrollto" href="/">Home</a></li>
+{% endif %}
+
+{% endblock %}
+
+
 {% block about %}
 {% endblock %}
 
 {% block blog %}
-<li><a class="nav-link scrollto" href="/blog">Blog</a></li>
+
+    {% if user.specialuser %}             
+            <a class="nav-link scrollto" href="/posts">All Posts</a></li>
+    {% else %}
+                        <!-- Normal User Link -->
+ <li><a class="nav-link scrollto" href="/blog">Blog</a></li>
+    {% endif %}
+<!-- <li><a class="nav-link scrollto" href="/blog">Blog</a></li> -->
 {% endblock %}
 
 {% block contact %}
@@ -15,9 +34,12 @@
   <div class="container">
     <div class="row">
         <div class="col-md-8 offset-md-2">
-            <div class="card mb-4">
-                <img src="{{ posts.image.url }}" class="card-img-top" alt="{{ posts.title }}">
-            </div>
+            {% if posts.image %}
+               <div class="blog-post-image">
+                  <img src="{{ posts.image.url }}" alt="Blog Image" class="img-fluid rounded">
+               </div>
+               {% endif %}
+               
             <div class="card">
                 <div class="card-body">
                     <h2 style="font-weight: bold;">{{ posts.title }}</h2>

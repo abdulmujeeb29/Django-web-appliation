@@ -1,145 +1,291 @@
-{% extends "base.html" %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
 
-{% block title %}
-My Blog - {{ block.super }}
-{% endblock %}
-{% block head %}
-<style>
-   /* Custom styles for the blog post */
-   .card {
-      border: none;
-      /* Remove border from the card */
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      /* Add a subtle shadow */
-      max-width: 450px;
-      /* Set a maximum width for the card */
-      margin: 0 auto;
-      margin-bottom: 4px;
-      /* Center the card horizontally */
-   }
+<head>
+   <meta charset="utf-8">
+   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-   .blog-post-title {
-      font-size: 24px;
-      font-weight: bold;
-      margin-bottom: 10px;
-   }
+   <title>Thales Media Inc</title>
+   <meta content="" name="description">
+   <meta content="" name="keywords">
 
-   .blog-post-image img {
-      max-width: 100%;
-      height: 100%;
-      /* Set the height to 100% of the container */
-      border-radius: 8px;
-      /* Add a slight border-radius to the image */
-   }
+   <!-- Favicons -->
+   <link href=" {% static 'assets/img/thales.jpeg'%}" rel="icon">
+   <link href=" {% static 'assets/img/thales.jpeg'%}" rel="apple-touch-icon">
 
-   .blog-post-body {
-      line-height: 1.6;
-   }
-
-   .blog-post-created {
-      font-size: 14px;
-      color: #888;
-   }
-</style>
-{% endblock %}
-{% block about %}
-
-<li><a class="nav-link scrollto" href="/about">About</a></li>
-
-{% endblock %}
-
-{% block contact %}
-
-{% endblock %}
+   <!-- Google Fonts -->
+   <link
+      href="{% static 'https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i' %}"
+      rel="stylesheet">
 
 
-{% block content %}
-<section id="hero" class="d-flex align-items-center">
-   <div class="container position-relative" data-aos="fade-up" data-aos-delay="100">
-      <div class="row justify-content-center">
-         <div class="col-md-10 col-lg-8 text-center">
-            <h1 class="h2">Welcome to ThalesBlog</h1>
-            <p class="lead">
-               Explore a world of knowledge, entertainment, and the latest trends at Thales Blog. We offer valuable
-               educational content
-               alongside entertaining articles and the latest information to keep you engaged and informed.
-            </p>
-            <p>
-               Whether you're a student, educator, or someone seeking entertainment and gist, our blog has something for
-               everyone. Join our
-               community to stay updated with the latest trends, expert insights, and exciting content.
-            </p>
-            <a href="#blog-posts" class="btn btn-primary">Explore Articles</a>
-         </div>
-      </div>
-   </div>
-</section>
+   <!-- Vendor CSS Files -->
+   <link href=" {% static 'assets/vendor/aos/aos.css' %}" rel="stylesheet">
+   <link href=" {% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+   <link href=" {% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+   <link href=" {% static 'assets/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+   <link href=" {% static 'assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+   <link href=" {% static 'assets/vendor/remixicon/remixicon.css' %}" rel="stylesheet">
+   <link href=" {% static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+
+   <!-- Template Main CSS File -->
+   <link href=" {% static 'assets/css/style.css' %}" rel="stylesheet">
+
+   <style>
+      /* Custom styles for the blog post */
+      .card {
+         border: none;
+         /* Remove border from the card */
+         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+         /* Add a subtle shadow */
+         max-width: 450px;
+         /* Set a maximum width for the card */
+         margin: 0 auto;
+         margin-bottom: 4px;
+         /* Center the card horizontally */
+      }
+
+      .blog-post-title {
+         font-size: 24px;
+         font-weight: bold;
+         margin-bottom: 10px;
+      }
+
+      .blog-post-image img {
+         max-width: 100%;
+         height: 100%;
+         /* Set the height to 100% of the container */
+         border-radius: 8px;
+         /* Add a slight border-radius to the image */
+      }
+
+      .blog-post-body {
+         line-height: 1.6;
+      }
+
+      .blog-post-created {
+         font-size: 14px;
+         color: #888;
+      }
+   </style>
+
+</head>
+
+<body>
+
+   <!-- ======= Header ======= -->
+   <header id="header" class="fixed-top">
+      <div class="container d-flex align-items-center justify-content-between">
+
+         <h1 class="logo"><a href="/">Thales Media Inc</a></h1>
+         <!-- Uncomment below if you prefer to use an image logo -->
+         <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
+         <nav id="navbar" class="navbar">
+            <ul>
+               <li><a class="nav-link scrollto active" href="/">Home</a></li>
+
+               <!-- <li><a class="nav-link scrollto active" href="#about">About</a></li> -->
 
 
 
-<div class="container" id="blog-posts">
-   <div class="row gx-4">
-      {% for blog_post in blogposts %}
-      <div class="col-md-6 mb-4">
-         <div class="card">
-            <div class="card-body">
-               <h1 class="blog-post-title display-4">{{ blog_post.title }}</h1>
-               {% if blog_post.image %}
-               <div class="blog-post-image">
-                  <img src="{{ blog_post.image.url }}" alt="Blog Image" class="img-fluid rounded">
-               </div>
+               <li><a class="nav-link scrollto active" href="blog">Blog</a></li>
+
+
+               <!-- <li><a class="nav-link scrollto active" href="#contact">Contact</a></li> -->
+
+               {% if user.is_authenticated %}
+               <li><a class="getstarted scrollto" href="login">Logout</a></li>
+               {% else %}
+               <li><a class="getstarted scrollto" href="register">Login or Signup</a></li>
                {% endif %}
-               <p class="blog-post-body lead">{{ blog_post.body|truncatewords:15 }}</p>
-               <p class="text-muted blog-post-created">{{ blog_post.created }}</p>
-               <div class="text-center">
-                  <a href="post/{{blog_post.id}}" class="btn btn-primary">Read More</a>
-               </div>
+
+            </ul>
+            <i class="bi bi-list mobile-nav-toggle"></i>
+         </nav><!-- .navbar -->
+
+      </div>
+   </header><!-- End Header -->
+
+
+   <section id="hero" class="d-flex align-items-center">
+      <div class="container position-relative" data-aos="fade-up" data-aos-delay="100">
+         <div class="row justify-content-center">
+            <div class="col-md-10 col-lg-8 text-center">
+               <h1 class="h2">Welcome to ThalesBlog</h1>
+               <p class="lead">
+                  Explore a world of knowledge, entertainment, and the latest trends at Thales Blog. We offer valuable
+                  educational content
+                  alongside entertaining articles and the latest information to keep you engaged and informed.
+               </p>
+               <p>
+                  Whether you're a student, educator, or someone seeking entertainment and gist, our blog has something
+                  for
+                  everyone. Join our
+                  community to stay updated with the latest trends, expert insights, and exciting content.
+               </p>
+               <a href="#blog-posts" class="btn btn-primary">Explore Articles</a>
             </div>
          </div>
       </div>
+   </section>
+   {% if messages %}
+   <div class="container mt-4">
+      {% for message in messages %}
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+         {{ message }}
+         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
       {% endfor %}
    </div>
-</div>
+   {% endif %}
 
+   <div class="container" id="blog-posts">
+      <div class="row gx-4">
+         {% for blog_post in blogposts %}
+         <div class="col-md-6 mb-4">
+            <div class="card">
+               <div class="card-body">
+                  <h1 class="blog-post-title display-4">{{ blog_post.title }}</h1>
+                  {% if blog_post.image %}
+                  <div class="blog-post-image">
+                     <img src="{{ blog_post.image.url }}" alt="Blog Image" class="img-fluid rounded">
+                  </div>
+                  {% endif %}
+                  <p class="blog-post-body lead">{{ blog_post.body|truncatewords:15 }}</p>
+                  <p class="text-muted blog-post-created">{{ blog_post.created }}</p>
+                  <div class="row text-center">
+                     <div class="col-md-6">
+                        <a href="post/{{blog_post.id}}" class="btn btn-primary">Read More</a>
+                     </div>
+                     <div class="col-md-6">
+                        {% if user.is_superuser %}
+                        <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                           data-bs-target="#deleteModal{{ blog_post.id }}">
+                           Delete Post
+                        </button>
+                        {% endif %}
+                     </div>
 
-
-
-
-
-
-
-
-
-<!-- "Create a Blog Post" Form -->
-{% if user.is_superuser %}
-<div class="row">
-   <div class="col-sm-10 offset-sm-1">
-      <div class="card">
-         <div class="card-body">
-            <h2>Create a Blog Post</h2>
-            <form action="/blog" method="POST" enctype="multipart/form-data">
-               {% csrf_token %}
-               <div class="form-group">
-                  <label for="title">Title</label>
-                  <input type="text" class="form-control" id="title" name="title" required>
+                  </div>
                </div>
-               <div class="form-group">
-                  <label for="body">Body</label>
-                  <textarea class="form-control" id="body" name="body" rows="5" required></textarea>
+            </div>
+         </div>
+
+         <!-- Delete Post Modal -->
+         {% if user.is_superuser %}
+         <div class="modal fade" id="deleteModal{{blog_post.id}}" tabindex="-1" role="dialog"
+            aria-labelledby="deleteModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+               <div class="modal-content">
+                  <div class="modal-header">
+                     <h5 class="modal-title" id="deleteModalLabel{{blog_post.id}}">Confirm Deletion</h5>
+                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                     </button>
+                  </div>
+                  <div class="modal-body">
+                     <p>Are you sure you want to delete this post?</p>
+                  </div>
+                  <div class="modal-footer">
+                     <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                        id="cancelDeleteBtn">Cancel</button>
+
+
+                     <form action="{% url 'delete_post_superuser' blog_post.pk %}" method="post">
+                        {% csrf_token %}
+
+                        <!-- <input type="hidden" name="post_id" value="{{ blog_post.id }}"> -->
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                     </form>
+                  </div>
                </div>
-               <div class="form-group">
-                  <label for="image">Image</label>
-                  <input type="file" class="form-control-file" id="image" name="image">
-               </div>
-               <!-- Add a hidden input for the author -->
-               <input type="hidden" name="author" value="{{ user.username }}">
-               <button type="submit" class="btn btn-primary btn-block">Create Post</button>
-            </form>
+            </div>
+         </div>
+         {% endif %}
+
+
+         {% endfor %}
+      </div>
+   </div>
+
+   <!-- Delete Post Modal -->
+
+
+   {% if messages %}
+   <div class="container mt-4">
+      {% for message in messages %}
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+         {{ message }}
+         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+      {% endfor %}
+   </div>
+   {% endif %}
+
+   <!-- "Create a Blog Post" Form -->
+   {% if user.is_superuser %}
+   <div class="row">
+      <div class="col-sm-10 offset-sm-1">
+         <div class="card">
+            <div class="card-body">
+               <h2>Create a Blog Post</h2>
+               <form action="/blog" method="POST" enctype="multipart/form-data">
+                  {% csrf_token %}
+                  <div class="form-group">
+                     <label for="title">Title</label>
+                     <input type="text" class="form-control" id="title" name="title" required>
+                  </div>
+                  <div class="form-group">
+                     <label for="body">Body</label>
+                     <textarea class="form-control" id="body" name="body" rows="5" required></textarea>
+                  </div>
+                  <div class="form-group">
+                     <label for="image">Image</label>
+                     <input type="file" class="form-control-file" id="image" name="image">
+                  </div>
+                  <!-- Add a hidden input for the author -->
+                  <input type="hidden" name="author" value="{{ user.username }}">
+                  <button type="submit" class="btn btn-primary btn-block">Create Post</button>
+               </form>
+            </div>
          </div>
       </div>
    </div>
-</div>
 
-{% endif %}
-</div>
-{% endblock %}
+   {% endif %}
+   </div>
+
+   <script>
+      // Wait for the DOM to be ready
+      document.addEventListener('DOMContentLoaded', function () {
+         // Initialize the Bootstrap modal
+         var deleteModal = new bootstrap.Modal(document.getElementById('deleteModal'));
+
+         // Handle the confirm delete button click
+         document.getElementById('cancelDeleteBtn').addEventListener('click', function () {
+            // Perform the delete action here
+            // For example, you can redirect to a delete view or make an AJAX request
+            // After deletion, close the modal
+            deleteModal.hide();
+         });
+      });
+   </script>
+
+
+   <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+   <script src="{% static 'assets/vendor/purecounter/purecounter_vanilla.js' %}"></script>
+   <script src="{% static 'assets/vendor/aos/aos.js' %}"></script>
+   <script src="{% static 'assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
+   <script src="{% static 'assets/vendor/isotope-layout/isotope.pkgd.min.js'%}"></script>
+   <script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+   <script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
+   <script src="{% static 'assets/js/main.js' %}"></script>
+
+
+</body>
+
+
+</html>

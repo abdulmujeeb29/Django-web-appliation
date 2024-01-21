@@ -3,14 +3,30 @@
 {% block title %} 
 About - {{block.super}}
 {% endblock %}
-
+  
+{% block home %}
+{% if user.specialuser %}             
+            <a class="nav-link scrollto" href="/dashboard">Home</a></li>
+    {% else %}
+                        <!-- Normal User Link -->
+ <li><a class="nav-link scrollto" href="/">Home</a></li>
+    {% endif %}
+{% endblock %}
 {% block about %}
 
 <li><a class="nav-link scrollto active" href="/about">About</a></li>
 {% endblock %}
+{% block blog %}
+{% if user.specialuser %}             
+            <a class="nav-link scrollto" href="/posts">All Posts</a></li>
+    {% else %}
+                        <!-- Normal User Link -->
+ <li><a class="nav-link scrollto" href="/blog">Blog</a></li>
+    {% endif %}
 
+{% endblock %}
 {% block contact %}
-<li><a class="nav-link scrollto" href="/contact">Contact</a></li>
+
 {% endblock %}
 
 {% block content %}

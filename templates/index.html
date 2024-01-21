@@ -1,5 +1,8 @@
 {% extends "base.html" %}
-
+{% block contact %}
+<li><a class="nav-link scrollto active" href="#contact">Contact</a></li>
+<li><a class="getstarted scrollto" href="#promote-post">Showcase your Work</a></li>
+{% endblock %}
 {% block content %}
 
 <!-- ======= Hero Section ======= -->
@@ -100,13 +103,31 @@
     </div>
   </section><!-- End About Section -->
 
+
+  <section id="promote-post">
+    <div class="container" data-aos="fade-up">
+      <div class="section-title">
+        <h2>Create and Showcase Your Work</h2>
+        <p>Are you a technical writer, content creator, or storyteller? Thales Media invites you to share your
+          creativity with the world. Whether it's informative articles, captivating stories, or engaging content, your
+          posts can reach a broad audience here. Join us in building a vibrant community where your voice is heard and
+          appreciated.</p>
+
+        <!-- Display a link to the post creation page -->
+        <a href="specialuser_reg" class="btn btn-primary btn-get-started scrollto">Get Started</a>
+      </div>
+    </div>
+  </section>
+
+
   <!-- ======= Contact Section ======= -->
   <section id="contact" class="contact">
     <div class="container" data-aos="fade-up">
 
       <div class="section-title">
         <h2>Contact Us</h2>
-        <p>If you have any questions, suggestions or inquiries, feel free to reach out to us. We'd love to hear from you!</p>
+        <p>If you have any questions, suggestions or inquiries, feel free to reach out to us. We'd love to hear from
+          you!</p>
       </div>
 
       <div class="row">
@@ -123,14 +144,14 @@
               <i class="bi bi-envelope"></i>
               <h4>Email:</h4>
               <p><a href="mailto:thalesmedia@gmail.com">thalesmedia@gmail.com</a></p>
-          </div>
-          
-          <div class="phone">
+            </div>
+
+            <div class="phone">
               <i class="bi bi-phone"></i>
               <h4>Call:</h4>
               <p><a href="tel:+2348102814215">+234 810 281 4215</a></p>
-          </div>
-          
+            </div>
+
           </div>
         </div>
 

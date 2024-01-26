@@ -4,10 +4,17 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-django = "*"
-pillow = "*"
-psycopg2 = "*"
-psycopg2-binary = "*"
+asgiref = "==3.7.2"
+certifi = "==2023.11.17"
+distlib = "==0.3.7"
+django = "==3.2.22"
+filelock = "==3.12.4"
+pipenv = "==2023.11.17"
+platformdirs = "==3.10.0"
+pytz = "==2023.3.post1"
+sqlparse = "==0.4.4"
+tzdata = "==2023.3"
+virtualenv = "==20.25.0"
 
 [dev-packages]
 

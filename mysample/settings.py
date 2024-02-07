@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-&c*y*1n)o_re4ix2jj)86c75b=qt5l$eii)n%053=(%wt!vc5%
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.vercel.app']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -88,12 +88,10 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'thalesdb',
         'USER': 'abdulmujeeb29',
-        'PASSWORD': 'cp0UKyB2Wknm',
-        'HOST': 'ep-cold-hill-a5tcnmkh.us-east-2.aws.neon.tech',
+        'PASSWORD': 'uyQkK0j4YwFr',
+        'HOST': 'ep-delicate-term-a50ocjxq.us-east-2.aws.neon.tech',
         'PORT': '5432',
-         'OPTIONS': {
-            'sslmode': 'require',
-        }
+        
     }
 }
 
